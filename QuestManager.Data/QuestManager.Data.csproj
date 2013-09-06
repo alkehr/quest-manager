@@ -31,10 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -48,15 +50,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Item.cs" />
-    <Compile Include="Migrations\201309042140308_InitialCreate.cs" />
-    <Compile Include="Migrations\201309042140308_InitialCreate.Designer.cs">
-      <DependentUpon>201309042140308_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201309050315089_Initial.cs" />
+    <Compile Include="Migrations\201309050315089_Initial.Designer.cs">
+      <DependentUpon>201309050315089_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201309042216240_AddItemToReward.cs" />
-    <Compile Include="Migrations\201309042216240_AddItemToReward.Designer.cs">
-      <DependentUpon>201309042216240_AddItemToReward.cs</DependentUpon>
+    <Compile Include="Migrations\Configuration.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Objective.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quest.cs" />
@@ -65,18 +65,21 @@
     <Compile Include="Reward.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201309042140308_InitialCreate.resx">
-      <DependentUpon>201309042140308_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201309042216240_AddItemToReward.resx">
-      <DependentUpon>201309042216240_AddItemToReward.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201309050315089_Initial.resx">
+      <DependentUpon>201309050315089_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

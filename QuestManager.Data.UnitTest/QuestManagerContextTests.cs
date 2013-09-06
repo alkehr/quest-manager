@@ -76,5 +76,57 @@ namespace QuestManager.Data.UnitTest
                 //CollectionAssert.AreEquivalent(quest.Rewards, actualQuest.Rewards);
             }
         }
+
+        [TestMethod]
+        public void FindQuest_RewardAssociatedToItem_ItemShouldMatch()
+        {
+            var quest = new Quest { Name = "Test Quest #1" };
+            var item = new Item { Name = "Item #1" };
+
+            using (var db = new QuestManagerContext())
+            {
+                quest.Name = "Test Quest #1";
+                quest.Rewards = new List<Reward>
+                {
+                    new Reward{Type = "item", Quantity = 1, Item = item },
+                };
+                db.Quests.Add(quest);
+                db.SaveChanges();
+            }
+
+            using (var db = new QuestManagerContext())
+            {
+                var actualQuest = db.Quests.Find(quest.QuestId);
+
+                Assert.AreEqual(1, actualQuest.Rewards.Count);
+                Assert.AreEqual(item.ItemId, actualQuest.Rewards.ElementAt(0).Item.ItemId);
+                Assert.AreEqual(item.Name, actualQuest.Rewards.ElementAt(0).Item.Name);
+            }
+        }
+
+        [TestMethod]
+        public void FindQuest_RewardNotAssociatedToItem_ShouldNotRequireAnItem()
+        {
+            var quest = new Quest { Name = "Test Quest #1" };
+
+            using (var db = new QuestManagerContext())
+            {
+                quest.Name = "Test Quest #1";
+                quest.Rewards = new List<Reward>
+                {
+                    new Reward{Type = "gold", Quantity = 500 },
+                };
+                db.Quests.Add(quest);
+                db.SaveChanges();
+            }
+
+            using (var db = new QuestManagerContext())
+            {
+                var actualQuest = db.Quests.Find(quest.QuestId);
+
+                Assert.AreEqual(1, actualQuest.Rewards.Count);
+                Assert.IsNull(actualQuest.Rewards.ElementAt(0).Item);
+            }
+        }
     }
 }

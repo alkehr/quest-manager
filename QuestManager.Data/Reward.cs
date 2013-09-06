@@ -13,7 +13,8 @@ namespace QuestManager.Data
 
         public int QuestId { get; set; }
 
-        //public int ItemId { get; set; }
+        public int? ItemId { get; set; }
+
         public virtual Item Item { get; set; }
     }
 }

@@ -9,8 +9,7 @@ namespace QuestManager.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "QuestManager.Data.QuestManagerContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(QuestManager.Data.QuestManagerContext context)
