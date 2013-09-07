@@ -4,8 +4,8 @@
         xmlns:local="clr-namespace:QuestManager.App"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:QuestsViewModel}">
-            <local:QuestsView />
+        <DataTemplate DataType="{x:Type local:QuestMasterViewModel}">
+            <local:QuestMasterView />
         </DataTemplate>
     </Window.Resources>
     <Grid>

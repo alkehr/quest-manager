@@ -11,7 +11,7 @@ namespace QuestManager.App
     {
         public MainViewModel()
         {
-            CurrentContent = new QuestsViewModel(new QuestManagerContext());
+            CurrentContent = new QuestMasterViewModel(new QuestManagerContext());
         }
 
         public object CurrentContent { get; set; }

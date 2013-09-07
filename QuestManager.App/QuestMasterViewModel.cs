@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 
 namespace QuestManager.App
 {
-    public class QuestsViewModel : INotifyPropertyChanged
+    public class QuestMasterViewModel : INotifyPropertyChanged
     {
         //System.Windows.Data.CollectionViewSource categoryViewSource =
         //        ((System.Windows.Data.CollectionViewSource)(this.FindResource("categoryViewSource")));
@@ -33,12 +33,12 @@ namespace QuestManager.App
         private ObservableCollection<Quest> _quests;
         private Quest _selectedQuest;
 
-        public QuestsViewModel()
+        public QuestMasterViewModel()
         {
             //Quests = new CollectionViewSource();
         }
 
-        public QuestsViewModel(QuestManagerContext context)
+        public QuestMasterViewModel(QuestManagerContext context)
         {
             _context = context;
             _context.Quests.Load();

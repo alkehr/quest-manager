@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace QuestManager.App
 {
     /// <summary>
-    /// Interaction logic for QuestsView.xaml
+    /// Interaction logic for QuestMasterView.xaml
     /// </summary>
-    public partial class QuestsView : UserControl
+    public partial class QuestMasterView
     {
-        public QuestsView()
+        public QuestMasterView()
         {
             InitializeComponent();
         }

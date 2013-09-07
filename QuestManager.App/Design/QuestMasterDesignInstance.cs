@@ -7,9 +7,9 @@ using System.Windows.Data;
 
 namespace QuestManager.App.Design
 {
-    internal sealed class QuestsDesignInstance : QuestsViewModel
+    internal sealed class QuestMasterDesignInstance : QuestMasterViewModel
     {
-        public QuestsDesignInstance()
+        public QuestMasterDesignInstance()
         {
             //Quests = new CollectionViewSource();
         }

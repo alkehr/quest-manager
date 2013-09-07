@@ -68,12 +68,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Design\QuestsDesignInstance.cs" />
+    <Compile Include="Design\QuestMasterDesignInstance.cs" />
     <Compile Include="MainViewModel.cs" />
-    <Compile Include="QuestsView.xaml.cs">
-      <DependentUpon>QuestsView.xaml</DependentUpon>
+    <Compile Include="QuestDetailView.xaml.cs">
+      <DependentUpon>QuestDetailView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuestsViewModel.cs" />
+    <Compile Include="QuestMasterView.xaml.cs">
+      <DependentUpon>QuestMasterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuestMasterViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,9 +89,13 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="QuestsView.xaml">
+    <Page Include="QuestDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuestMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
