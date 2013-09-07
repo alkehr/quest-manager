@@ -1,28 +1,23 @@
-﻿<UserControl
+﻿<UserControl x:Class="QuestManager.App.QuestMasterView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:design="clr-namespace:QuestManager.App.Design"
+             xmlns:local="clr-namespace:QuestManager.App"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:Design="clr-namespace:QuestManager.App.Design"
-             xmlns:Data="clr-namespace:QuestManager.Data;assembly=QuestManager.Data" x:Class="QuestManager.App.QuestMasterView" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded" d:DataContext="{d:DesignInstance Type=Design:QuestMasterDesignInstance, IsDesignTimeCreatable=True}">
-    <!--<UserControl.Resources>
-        <CollectionViewSource x:Key="questViewSource" d:DesignSource="{d:DesignInstance {x:Type Data:Quest}, CreateList=True}"/>
-        <CollectionViewSource x:Key="questObjectivesViewSource" Source="{Binding Objectives, Source={StaticResource questViewSource}}"/>
-    </UserControl.Resources>-->
-    <!--<UserControl.Resources>
-        <CollectionViewSource x:Key="questViewSource" d:DesignSource="{d:DesignInstance {x:Type Data:Quest}, CreateList=True}"/>
-    </UserControl.Resources>-->
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance Type=design:QuestMasterDesignInstance, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:QuestDetailViewModel}">
+            <local:QuestDetailView />
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
 
         <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" RowDetailsVisibilityMode="VisibleWhenSelected" SelectedItem="{Binding SelectedQuest}" ItemsSource="{Binding Quests}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -31,21 +26,8 @@
                 <DataGridTextColumn x:Name="questIdColumn" Width="SizeToHeader" Header="Quest Id" Binding="{Binding QuestId}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid Grid.Row="1" Grid.Column="0" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Objectives}" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="objectiveIdColumn" Binding="{Binding ObjectiveId}" Header="Objective Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="titleColumn" Binding="{Binding Title}" Header="Title" Width="SizeToHeader"/>
-            </DataGrid.Columns>
-        </DataGrid>
 
-        <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Rewards}" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="rewardIdColumn" Binding="{Binding RewardId}" Header="Reward Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding Quantity}" Header="Quantity" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="itemIdColumn" Binding="{Binding ItemId}" Header="Item Id" Width="SizeToHeader"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
+        <ContentControl Content="{Binding SelectedQuest}" Grid.Row="1" Margin="0,2,0,-2" />
     </Grid>
+    
 </UserControl>

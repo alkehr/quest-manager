@@ -68,11 +68,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Design\QuestDetailDesignInstance.cs" />
     <Compile Include="Design\QuestMasterDesignInstance.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="QuestDetailView.xaml.cs">
       <DependentUpon>QuestDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuestDetailViewModel.cs" />
     <Compile Include="QuestMasterView.xaml.cs">
       <DependentUpon>QuestMasterView.xaml</DependentUpon>
     </Compile>

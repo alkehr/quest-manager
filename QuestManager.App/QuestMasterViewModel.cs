@@ -30,8 +30,8 @@ namespace QuestManager.App
         //    categoryViewSource.Source = _context.Categories.Local;
 
         private QuestManagerContext _context; // = new QuestManagerContext();
-        private ObservableCollection<Quest> _quests;
-        private Quest _selectedQuest;
+        private IEnumerable<QuestDetailViewModel> _quests;
+        private QuestDetailViewModel _selectedQuest;
 
         public QuestMasterViewModel()
         {
@@ -43,43 +43,45 @@ namespace QuestManager.App
             _context = context;
             _context.Quests.Load();
 
-            Quests = _context.Quests.Local;
+            Quests = _context.Quests.Local.Select(q => new QuestDetailViewModel(q));
             //var quests = new CollectionViewSource { Source = _context.Quests.Local };
             //Quests = quests;
         }
 
-        public ObservableCollection<Quest> Quests
+        public IEnumerable<QuestDetailViewModel> Quests
         {
-            get { return _quests; }
-            private set
+            get { return _quests ?? Enumerable.Empty<QuestDetailViewModel>(); }
+            protected set
             {
                 _quests = value;
                 RaisePropertyChanged("Quests");
+                if (SelectedQuest == null)
+                    SelectedQuest = Quests.FirstOrDefault();
             }
         }
 
-        public Quest SelectedQuest
+        public QuestDetailViewModel SelectedQuest
         {
             get { return _selectedQuest; }
             set
             {
-                _context.SaveChanges();
+                //_context.SaveChanges();
                 _selectedQuest = value;
                 RaisePropertyChanged("SelectedQuest");
-                RaisePropertyChanged("Objectives");
-                RaisePropertyChanged("Rewards");
+                //RaisePropertyChanged("Objectives");
+                //RaisePropertyChanged("Rewards");
             }
         }
 
-        public IEnumerable<Objective> Objectives
-        {
-            get { return SelectedQuest != null ? SelectedQuest.Objectives : null; }
-        }
+        //public IEnumerable<Objective> Objectives
+        //{
+        //    get { return SelectedQuest != null ? SelectedQuest.Objectives : null; }
+        //}
 
-        public IEnumerable<Reward> Rewards
-        {
-            get { return SelectedQuest != null ? SelectedQuest.Rewards : null; }
-        }
+        //public IEnumerable<Reward> Rewards
+        //{
+        //    get { return SelectedQuest != null ? SelectedQuest.Rewards : null; }
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 
