@@ -1,8 +1,6 @@
 ﻿<UserControl x:Class="QuestManager.App.QuestDetailView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:properties="clr-namespace:QuestManager.App.Properties"
-             xmlns:local="clr-namespace:QuestManager.App"
              xmlns:design="clr-namespace:QuestManager.App.Design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -11,26 +9,30 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="{Binding ObjectivesLabel}" FontWeight="Bold" Margin="5" />
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Command="{Binding ShowSerializedQuestCommand}">Serialize</Button>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Text="{Binding ObjectivesLabel}" FontWeight="Bold" Margin="5" />
         <DataGrid Grid.Row="1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Objectives}" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="objectiveIdColumn" Binding="{Binding ObjectiveId}" Header="Objective Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="titleColumn" Binding="{Binding Title}" Header="Title" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="ObjectiveIdColumn" Binding="{Binding ObjectiveId}" Header="Objective Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="TitleColumn" Binding="{Binding Title}" Header="Title" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <TextBlock Grid.Row="2" Text="{Binding RewardsLabel}" FontWeight="Bold" Margin="5" />
-        <DataGrid Grid.Row="3" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Rewards}" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <TextBlock Grid.Row="3" Text="{Binding RewardsLabel}" FontWeight="Bold" Margin="5" />
+        <DataGrid Grid.Row="4" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Rewards}" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="rewardIdColumn" Binding="{Binding RewardId}" Header="Reward Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding Quantity}" Header="Quantity" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="itemIdColumn" Binding="{Binding ItemId}" Header="Item Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="RewardIdColumn" Binding="{Binding RewardId}" Header="Reward Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="TypeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="QuantityColumn" Binding="{Binding Quantity}" Header="Quantity" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="ItemIdColumn" Binding="{Binding ItemId}" Header="Item Id" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
 

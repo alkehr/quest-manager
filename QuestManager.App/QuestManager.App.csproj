@@ -79,6 +79,10 @@
       <DependentUpon>QuestMasterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="QuestMasterViewModel.cs" />
+    <Compile Include="SerializedQuestDialog.xaml.cs">
+      <DependentUpon>SerializedQuestDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSerializedQuestCommand.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +102,10 @@
     <Page Include="QuestMasterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SerializedQuestDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +140,10 @@
     <ProjectReference Include="..\QuestManager.Data\QuestManager.Data.csproj">
       <Project>{da046f44-01a9-4ddb-9e9c-75e6ee506ab4}</Project>
       <Name>QuestManager.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuestManager.Serialization\QuestManager.Serialization.csproj">
+      <Project>{e6828b0b-4d3d-4520-8fa8-923a1b1e3db5}</Project>
+      <Name>QuestManager.Serialization</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,11 +19,11 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" RowDetailsVisibilityMode="VisibleWhenSelected" SelectedItem="{Binding SelectedQuest}" ItemsSource="{Binding Quests}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="0" Grid.Column="0" RowDetailsVisibilityMode="VisibleWhenSelected" SelectedItem="{Binding SelectedQuest}" ItemsSource="{Binding Quests}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="levelColumn" Width="SizeToHeader" Header="Level" Binding="{Binding Level}"/>
-                <DataGridTextColumn x:Name="nameColumn" Width="SizeToHeader" Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn x:Name="questIdColumn" Width="SizeToHeader" Header="Quest Id" Binding="{Binding QuestId}"/>
+                <DataGridTextColumn x:Name="LevelColumn" Width="SizeToHeader" Header="Level" Binding="{Binding Level}"/>
+                <DataGridTextColumn x:Name="NameColumn" Width="SizeToHeader" Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn x:Name="QuestIdColumn" Width="SizeToHeader" Header="Quest Id" Binding="{Binding QuestId}"/>
             </DataGrid.Columns>
         </DataGrid>
 

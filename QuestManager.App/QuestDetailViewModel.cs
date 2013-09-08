@@ -1,20 +1,30 @@
-﻿using QuestManager.App.Properties;
+﻿using System.IO;
+using System.Windows.Input;
+using QuestManager.App.Properties;
 using QuestManager.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using QuestManager.Serialization;
 
 namespace QuestManager.App
 {
     public class QuestDetailViewModel
     {
         private readonly Quest _quest;
+        private ShowSerializedQuestCommand _showSerializedQuestCommand;
 
         public QuestDetailViewModel(Quest quest)
         {
             _quest = quest;
+        }
+
+        public ICommand ShowSerializedQuestCommand
+        {
+            get
+            {
+                return _showSerializedQuestCommand ??
+                       (_showSerializedQuestCommand = new ShowSerializedQuestCommand(this));
+            }
         }
 
         public string ObjectivesLabel
@@ -49,6 +59,35 @@ namespace QuestManager.App
         public IEnumerable<Objective> Objectives
         {
             get { return _quest.Objectives; }
+        }
+
+        private string _serializedQuest;
+        public string SerializedQuest
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_serializedQuest))
+                {
+                    var sb = new StringBuilder();
+                    var x = new QuestTextWriter(new StringWriter(sb));
+                    x.Write(_quest);
+                    _serializedQuest = sb.ToString();
+                }
+
+                return _serializedQuest;
+            }
+        }
+
+        public bool CanShowSerializedQuest()
+        {
+            return _quest != null;
+        }
+
+        public void ShowSerializedQuest()
+        {
+            var dialog = new SerializedQuestDialog { DataContext = this };
+
+            dialog.ShowDialog();
         }
     }
 }
