@@ -16,16 +16,14 @@ namespace QuestManager.App
         {
         }
 
-        public QuestMasterViewModel(QuestManagerContext context)
+        public QuestMasterViewModel(IQuestRepository questRepository)
         {
-            if (context == null)
-                throw new ArgumentNullException("context");
+            if (questRepository == null)
+                throw new ArgumentNullException("questRepository");
 
-            context.Quests.Load();
-
-            Quests = context.Quests.Local.Select(q => new QuestDetailViewModel(q));
+            Quests = questRepository.GetAll().Select(q => new QuestDetailViewModel(q));
         }
-
+        
         public IEnumerable<QuestDetailViewModel> Quests
         {
             get { return _quests ?? Enumerable.Empty<QuestDetailViewModel>(); }

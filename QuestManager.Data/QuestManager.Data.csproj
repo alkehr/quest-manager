@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFrameworkRepository.cs" />
+    <Compile Include="IQuestRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Migrations\201309050315089_Initial.cs" />
     <Compile Include="Migrations\201309050315089_Initial.Designer.cs">
@@ -62,6 +65,7 @@
     <Compile Include="Quest.cs" />
     <Compile Include="QuestManagerContext.cs" />
     <Compile Include="QuestObjective.cs" />
+    <Compile Include="QuestRepository.cs" />
     <Compile Include="Reward.cs" />
   </ItemGroup>
   <ItemGroup>

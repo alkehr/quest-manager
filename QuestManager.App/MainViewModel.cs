@@ -6,7 +6,7 @@ namespace QuestManager.App
     {
         public MainViewModel()
         {
-            CurrentContent = new QuestMasterViewModel(new QuestManagerContext());
+            CurrentContent = new QuestMasterViewModel(new QuestRepository(new QuestManagerContext()));
         }
 
         public object CurrentContent { get; set; }
