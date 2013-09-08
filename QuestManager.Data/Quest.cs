@@ -13,9 +13,10 @@ namespace QuestManager.Data
 
         [QuestElement("level")]
         public int Level { get; set; }
-
+        
+        [QuestKeyedArray("objectives")]
         public virtual List<Objective> Objectives { get; set; }
-        public virtual List<Reward> Rewards { get; set; }
 
+        public virtual List<Reward> Rewards { get; set; }
     }
 }

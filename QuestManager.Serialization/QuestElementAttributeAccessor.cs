@@ -4,17 +4,17 @@ namespace QuestManager.Serialization
 {
     public class QuestElementAttributeAccessor : QuestAttributeAccessor
     {
-        private readonly QuestElementAttribute _elementAttribute;
+        private readonly string _name;
 
-        public QuestElementAttributeAccessor(QuestElementAttribute elementAttribute, MemberInfo member)
+        public QuestElementAttributeAccessor(string name, MemberInfo member)
             : base(member)
         {
-            _elementAttribute = elementAttribute;
+            _name = name;
         }
 
         public string GetName()
         {
-            return _elementAttribute.ElementName;
+            return _name;
         }
     }
 }

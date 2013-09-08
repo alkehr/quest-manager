@@ -13,6 +13,7 @@ namespace QuestManager.Serialization
         protected abstract void WriteBeginQuest(object questId);
 
         protected abstract void WriteStartElement(string name);
+        protected abstract void WriteElementKey(object key);
         protected abstract void WriteElementValue(object value);
 
         protected virtual void WriteEndElement()
@@ -27,14 +28,9 @@ namespace QuestManager.Serialization
         {
             var questAttributes = QuestAttributes.Create(quest);
 
-            WriteBeginQuest(questAttributes.QuestIdAttributeAccessor.GetValue(quest));
+            WriteBeginQuest(questAttributes.QuestIdAccessor.GetValue(quest));
 
-            foreach (var elementAccessor in questAttributes.QuestElementAccessors)
-            {
-                var value = elementAccessor.GetValue(quest);
-                if (value != null)
-                    WriteElement(elementAccessor.GetName(), value);
-            }
+            WriteElements(questAttributes, quest);
 
             WriteEndQuest();
 
@@ -61,9 +57,39 @@ namespace QuestManager.Serialization
              */
         }
 
+        private void WriteElements(QuestAttributes attributes, object target)
+        {
+            foreach (var elementAccessor in attributes.QuestElementAccessors)
+            {
+                var value = elementAccessor.GetValue(target);
+                if (value != null)
+                    WriteElement(elementAccessor.GetName(), value);
+            }
+
+            foreach (var arrayAccessor in attributes.QuestArrayAccessors)
+            {
+                foreach (var item in arrayAccessor.GetArray(target))
+                {
+                    var itemValue = arrayAccessor.GetItemValue(item);
+                    if (itemValue != null)
+                    {
+                        WriteKeyedElement(arrayAccessor.GetName(), arrayAccessor.GetItemKey(item), itemValue);
+                    }
+                }
+            }
+        }
+
         protected void WriteElement(string name, object value)
         {
             WriteStartElement(name);
+            WriteElementValue(value);
+            WriteEndElement();
+        }
+
+        protected void WriteKeyedElement(string name, object key, object value)
+        {
+            WriteStartElement(name);
+            WriteElementKey(key);
             WriteElementValue(value);
             WriteEndElement();
         }

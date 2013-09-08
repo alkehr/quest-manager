@@ -22,10 +22,13 @@ namespace QuestManager.Serialization
             WriteString("q[:{0}]", name);
         }
 
+        protected override void WriteElementKey(object key)
+        {
+            WriteString("[{0}]", key);
+        }
+
         protected override void WriteElementValue(object value)
         {
-
-            
             WriteString("={0}", SerializeValue(value));
         }
 

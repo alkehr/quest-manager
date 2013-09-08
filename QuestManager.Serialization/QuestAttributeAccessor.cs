@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace QuestManager.Serialization
 {
@@ -25,6 +26,24 @@ namespace QuestManager.Serialization
             if (fieldInfo != null)
             {
                 return fieldInfo.GetValue(target);
+            }
+
+            return null;
+        }
+
+        protected Type GetMemberReturnType()
+        {
+            var propertyInfo = _member as PropertyInfo;
+            if (propertyInfo != null)
+            {
+                MethodInfo getter = propertyInfo.GetGetMethod();
+                return getter.ReturnType;
+            }
+
+            var fieldInfo = _member as FieldInfo;
+            if (fieldInfo != null)
+            {
+                return fieldInfo.FieldType;
             }
 
             return null;

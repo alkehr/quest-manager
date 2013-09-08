@@ -3,7 +3,7 @@
 namespace QuestManager.Serialization
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
-    public class QuestIdAttribute : Attribute
+    public class QuestArrayValueAttribute : Attribute
     {
     }
 }
