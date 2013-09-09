@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddQuestLabel" xml:space="preserve">
+    <value>Add Quest</value>
+  </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="ObjectivesLabel" xml:space="preserve">
     <value>Objectives</value>
+  </data>
+  <data name="OkLabel" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="QuestIdLabel" xml:space="preserve">
+    <value>Quest Id</value>
+  </data>
+  <data name="QuestLevelLabel" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="QuestNameLabel" xml:space="preserve">
+    <value>Name</value>
   </data>
   <data name="RewardsLabel" xml:space="preserve">
     <value>Rewards</value>

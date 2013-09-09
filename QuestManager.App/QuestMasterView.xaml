@@ -11,23 +11,29 @@
         <DataTemplate DataType="{x:Type local:QuestDetailViewModel}">
             <local:QuestDetailView />
         </DataTemplate>
+       
     </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" Grid.Column="0" RowDetailsVisibilityMode="VisibleWhenSelected" SelectedItem="{Binding SelectedQuest}" ItemsSource="{Binding Quests}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding AddQuestCommand}" Content="{Binding AddQuestLabel}" />
+        </StackPanel>
+        
+        <DataGrid Grid.Row="1" Grid.Column="0" RowDetailsVisibilityMode="VisibleWhenSelected" SelectedItem="{Binding SelectedQuest}" ItemsSource="{Binding Quests}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="LevelColumn" Width="SizeToHeader" Header="Level" Binding="{Binding Level}"/>
-                <DataGridTextColumn x:Name="NameColumn" Width="SizeToHeader" Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn x:Name="QuestIdColumn" Width="SizeToHeader" Header="Quest Id" Binding="{Binding QuestId}"/>
+                <DataGridTextColumn x:Name="NameColumn" Width="SizeToCells" Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn x:Name="LevelColumn" Width="SizeToHeader" Header="Level" Binding="{Binding Level}" />
             </DataGrid.Columns>
         </DataGrid>
 
-        <ContentControl Content="{Binding SelectedQuest}" Grid.Row="1" Margin="0,2,0,-2" />
+        <ContentControl Content="{Binding SelectedQuest}" Grid.Row="2" />
     </Grid>
     
 </UserControl>

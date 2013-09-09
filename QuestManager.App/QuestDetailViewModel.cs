@@ -27,6 +27,11 @@ namespace QuestManager.App
             }
         }
 
+        public string NameLabel
+        {
+            get { return Resources.QuestNameLabel; }
+        }
+
         public string ObjectivesLabel
         {
             get { return Resources.ObjectivesLabel; }
@@ -37,9 +42,25 @@ namespace QuestManager.App
             get { return Resources.RewardsLabel; }
         }
 
+        public string OkLabel
+        {
+            get { return Resources.OkLabel; }
+        }
+
+        public string CancelLabel
+        {
+            get { return Resources.CancelLabel; }
+        }
+
         public string Name
         {
             get { return _quest.Name; }
+            set { _quest.Name = value; }
+        }
+
+        public Quest Quest
+        {
+            get { return _quest; }
         }
 
         public int QuestId

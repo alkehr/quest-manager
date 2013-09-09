@@ -8,5 +8,6 @@ namespace QuestManager.Data
         void Remove(T entity);
         List<T> GetAll();
         T Find(params object[] keyValues);
+        void SaveChanges();
     }
 }

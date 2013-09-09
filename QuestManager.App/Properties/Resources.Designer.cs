@@ -61,11 +61,65 @@ namespace QuestManager.App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Quest.
+        /// </summary>
+        internal static string AddQuestLabel {
+            get {
+                return ResourceManager.GetString("AddQuestLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string CancelLabel {
+            get {
+                return ResourceManager.GetString("CancelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Objectives.
         /// </summary>
         internal static string ObjectivesLabel {
             get {
                 return ResourceManager.GetString("ObjectivesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OkLabel {
+            get {
+                return ResourceManager.GetString("OkLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quest Id.
+        /// </summary>
+        internal static string QuestIdLabel {
+            get {
+                return ResourceManager.GetString("QuestIdLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level.
+        /// </summary>
+        internal static string QuestLevelLabel {
+            get {
+                return ResourceManager.GetString("QuestLevelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string QuestNameLabel {
+            get {
+                return ResourceManager.GetString("QuestNameLabel", resourceCulture);
             }
         }
         

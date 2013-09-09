@@ -7,6 +7,7 @@ namespace QuestManager.Data
 {
     public class EntityFrameworkRepository<T> : IRepository<T> where T : class
     {
+        private readonly DbContext _context;
         private readonly DbSet<T> _dbSet;
 
         public EntityFrameworkRepository(DbContext context)
@@ -14,7 +15,8 @@ namespace QuestManager.Data
             if (context == null)
                 throw new ArgumentNullException("context");
 
-            _dbSet = context.Set<T>();
+            _context = context;
+            _dbSet = _context.Set<T>();
         }
 
         public virtual void Add(T entity)
@@ -45,6 +47,11 @@ namespace QuestManager.Data
         public virtual T Find(params object[] keyValues)
         {
             return _dbSet.Find(keyValues);
+        }
+
+        public virtual void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }
